@@ -212,8 +212,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Active Navigation Link Highlighter & Scroll Observer
+  // 7. Active Navigation Link Highlighter & Glassy Header Observer
   const currentFileName = window.location.pathname.split('/').pop() || 'index.html';
+  const navbarEl = document.querySelector('.navbar');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbarEl?.classList.add('scrolled');
+    } else {
+      navbarEl?.classList.remove('scrolled');
+    }
+  });
 
   if (currentFileName === 'index.html' || currentFileName === '') {
     const sections = document.querySelectorAll('section[id]');
