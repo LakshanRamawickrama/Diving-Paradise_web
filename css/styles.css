@@ -392,7 +392,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
   position: relative;
   min-height: 88vh;
-  background: linear-gradient(180deg, rgba(7, 19, 37, 0.75) 0%, rgba(10, 25, 47, 0.88) 100%),
+  background: linear-gradient(180deg, rgba(4, 12, 24, 0.55) 0%, rgba(7, 19, 37, 0.82) 100%),
               url('../assets/images/hero.png') center/cover no-repeat;
   display: flex;
   align-items: center;
