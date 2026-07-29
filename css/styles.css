@@ -1897,5 +1897,37 @@ textarea.form-control {
   margin-left: 6px;
 }
 
+/* Floating Back to Top Arrow Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 90px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--navy-dark);
+  color: var(--azure-bright);
+  border: 1px solid rgba(0, 180, 216, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
 
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
 
+.back-to-top-btn:hover {
+  background: var(--azure-bright);
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
