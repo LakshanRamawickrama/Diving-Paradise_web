@@ -365,8 +365,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 11. Live Google Places API Reviews Fetcher (Optional Integration)
+  // Set your Google Cloud Places API Key below to automatically fetch & replace reviews dynamically
+  const GOOGLE_PLACES_API_KEY = ""; // Insert your Google Places API Key here (e.g. AIzaSy...)
+  const GOOGLE_PLACE_ID = "ChIJ24Vo4zU-4ToRikoD6xZJ0io"; // Diving & Snorkeling Paradise Mirissa Place ID
+
+  function fetchLiveGoogleReviews() {
+    if (!GOOGLE_PLACES_API_KEY) return; // Skip if no API key provided yet
+
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=rating,reviews,user_ratings_total&key=${GOOGLE_PLACES_API_KEY}`;
+
+    fetch(apiUrl)
+      .then(res => res.json())
+      .then(data => {
+        if (data.result && data.result.reviews) {
+          const reviewsContainer = document.querySelector('#reviews .reviews-grid');
+          if (!reviewsContainer) return;
+
+          // Render live Google reviews dynamically
+          reviewsContainer.innerHTML = data.result.reviews.map(r => `
+            <div class="review-card">
+              <div class="review-header">
+                <img src="${r.profile_photo_url}" alt="${r.author_name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                <div class="reviewer-info">
+                  <h4>${r.author_name} <span class="review-verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</span></h4>
+                  <span>${r.relative_time_description} • Google Review</span>
+                </div>
+              </div>
+              <div class="review-stars" style="color: var(--accent-gold); margin: 10px 0;">${'★'.repeat(r.rating)}</div>
+              <p class="review-text">"${r.text}"</p>
+            </div>
+          `).join('');
+        }
+      })
+      .catch(err => console.log('Google Places API Notice:', err));
+  }
+
+  fetchLiveGoogleReviews();
+
   // Initial setup
   calculateTotal();
   updateAllDisplayedPrices();
 });
+
 
