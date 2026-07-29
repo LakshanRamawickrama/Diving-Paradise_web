@@ -22,6 +22,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
+  <!-- Favicon (Transparent Circular Badge) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/styles.css">
 
@@ -86,10 +91,8 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="container navbar-content">
-      <a href="#" class="brand-logo">
-        <div class="logo-icon">
-          <i class="bi bi-water"></i>
-        </div>
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/favicon.png" alt="Diving & Snorkeling Paradise Mirissa Logo" class="brand-logo-img">
         <div class="brand-text">
           <span class="brand-title">DIVING PARADISE</span>
           <span class="brand-subtitle">& SNORKELING MIRISSA</span>
@@ -98,10 +101,10 @@
 
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#tours">Tour Packages</a></li>
         <li><a href="#why-us">Why Choose Us</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#tours">Tour Packages</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
 
       <button class="btn btn-primary open-booking-modal" data-tour-key="turtle-snorkeling" data-tour-title="Snorkeling with Sea Turtles">
@@ -188,6 +191,81 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="section-padding bg-alt" id="why-us">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="section-tag light-mode"><i class="bi bi-award-fill"></i> Why Choose Diving Paradise</span>
+        <h2 class="section-title">Mirissa's #1 Rated <span>Ocean Adventure Center</span></h2>
+        <p class="section-subtitle">Discover what makes Diving & Snorkeling Paradise Mirissa the top-rated marine tour operator in Southern Sri Lanka.</p>
+      </div>
+
+      <!-- Attractive About & Brand Intro Paragraph Box -->
+      <div class="why-intro-card">
+        <div class="why-intro-grid">
+          <div class="why-intro-text">
+            <div class="why-intro-badge">
+              <i class="bi bi-star-fill text-gold"></i> 4.9 / 5.0 Google Rating (520+ Verified Guest Reviews)
+            </div>
+            <h3 style="font-size: 1.6rem; color: var(--navy-dark); margin-bottom: 12px;">
+              Unforgettable Ocean Encounters with Expert Local PADI Guides
+            </h3>
+            <p style="font-size: 1.02rem; line-height: 1.7; color: var(--text-body); margin-bottom: 16px;">
+              Located right on <strong>Thappawatt Road, Mirissa Beach</strong>, <strong>Diving & Snorkeling Paradise Mirissa</strong> is dedicated to delivering world-class marine adventures. Guided by certified local PADI dive masters, we specialize in high-sighting marine excursions—from swimming side-by-side with giant green sea turtles in crystal-clear reef bays to spotting majestic blue whales in deep waters and diving vibrant coral reefs.
+            </p>
+            <p style="font-size: 1.02rem; line-height: 1.7; color: var(--text-body); margin-bottom: 20px;">
+              <strong>Nervous about swimming or taking your family?</strong> We welcome non-swimmers with dedicated 1-on-1 personal guide assistance and floating vests so everyone experiences the ocean safely. Plus, every single group receives <strong>free 4K HD GoPro photos & video clips</strong> transferred directly to your phone after your tour!
+            </p>
+
+            <div class="why-highlights-strip">
+              <div class="highlight-pill"><i class="bi bi-shield-check text-azure"></i> PADI Certified Guides</div>
+              <div class="highlight-pill"><i class="bi bi-check-circle-fill text-azure"></i> 100% Turtle Sighting Record</div>
+              <div class="highlight-pill"><i class="bi bi-camera-fill text-azure"></i> Free 4K GoPro HD Media</div>
+              <div class="highlight-pill"><i class="bi bi-heart-fill text-azure"></i> Non-Swimmers Welcome</div>
+              <div class="highlight-pill"><i class="bi bi-car-front-fill text-azure"></i> Free Hotel Pickups</div>
+            </div>
+          </div>
+
+          <div class="why-intro-media">
+            <img src="assets/images/turtle.png" alt="Diving & Snorkeling Paradise Mirissa Sea Turtle" class="why-intro-featured-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Core 4 Cards Grid -->
+      <div class="why-us-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <div class="why-icon"><i class="bi bi-shield-lock-fill"></i></div>
+          <h3 class="why-card-title">Commitment to Safety</h3>
+          <p>We use sanitized, high-quality diving equipment, safety jackets, and follow strict PADI marine protocols to ensure worry-free ocean experiences.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <div class="why-icon"><i class="bi bi-person-heart"></i></div>
+          <h3 class="why-card-title">Expert Guides & Non-Swimmers</h3>
+          <p>Scared of water? Don't worry! Our friendly local dive masters provide 1-on-1 personal assistance so anyone can swim safely with sea turtles.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <div class="why-icon"><i class="bi bi-camera-reels-fill"></i></div>
+          <h3 class="why-card-title">100% Sightings & Free HD Media</h3>
+          <p>Spot sea turtles, reef fish, and whales in their natural habitat. We capture high-resolution underwater photos & videos for your group!</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-num">04</div>
+          <div class="why-icon"><i class="bi bi-building-check"></i></div>
+          <h3 class="why-card-title">On-Site Facilities & Free Pickups</h3>
+          <p>Enjoy on-site services, gender-neutral toilets, changing facilities, easy debit card payments, and free multi-storey & street parking.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -382,47 +460,6 @@
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
-  <section class="section-padding bg-alt" id="why-us">
-    <div class="container">
-      <div style="text-align: center;">
-        <span class="section-tag light-mode">Why Choose Diving Paradise</span>
-        <h2 class="section-title">Your Safety & Satisfaction <span>Is Our Priority</span></h2>
-        <p class="section-subtitle">With over 10+ years of local marine experience in Mirissa, we deliver top-rated personalized ocean tours.</p>
-      </div>
-
-      <div class="why-us-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <div class="why-card">
-          <div class="why-num">01</div>
-          <div class="why-icon"><i class="bi bi-shield-lock-fill"></i></div>
-          <h3 class="why-card-title">Commitment to Safety</h3>
-          <p>We use sanitized, high-quality diving equipment, safety jackets, and follow strict PADI marine protocols to ensure worry-free ocean experiences.</p>
-        </div>
-
-        <div class="why-card">
-          <div class="why-num">02</div>
-          <div class="why-icon"><i class="bi bi-person-heart"></i></div>
-          <h3 class="why-card-title">Expert Guides & Non-Swimmers</h3>
-          <p>Scared of water? Don't worry! Our friendly local dive masters provide 1-on-1 personal assistance so anyone can swim safely with sea turtles.</p>
-        </div>
-
-        <div class="why-card">
-          <div class="why-num">03</div>
-          <div class="why-icon"><i class="bi bi-camera-reels-fill"></i></div>
-          <h3 class="why-card-title">100% Sightings & Free HD Media</h3>
-          <p>Spot sea turtles, reef fish, and whales in their natural habitat. We capture high-resolution underwater photos & videos for your group!</p>
-        </div>
-
-        <div class="why-card">
-          <div class="why-num">04</div>
-          <div class="why-icon"><i class="bi bi-building-check"></i></div>
-          <h3 class="why-card-title">On-Site Facilities & Parking</h3>
-          <p>Enjoy on-site services, gender-neutral toilets, changing facilities, easy debit card payments, and free multi-storey & street parking.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Dynamic Price Estimator Section -->
   <section class="section-padding" id="calculator">
     <div class="container">
@@ -564,47 +601,93 @@
   <section class="section-padding" id="reviews">
     <div class="container">
       <div style="text-align: center;">
-        <span class="section-tag light-mode">Traveler Reviews</span>
+        <span class="section-tag light-mode"><i class="bi bi-star-fill text-gold"></i> Verified Google Business Reviews</span>
         <h2 class="section-title">What Our <span>Guests Say</span></h2>
-        <p class="section-subtitle">Read verified feedback from travelers who experienced the ocean with us.</p>
+        <p class="section-subtitle">Real experiences shared by travelers who booked sea turtle snorkeling, whale watching, and scuba diving tours with us in Mirissa.</p>
       </div>
 
-      <div class="reviews-grid">
+      <!-- Google Reviews Banner Header -->
+      <div class="google-reviews-header-card">
+        <div class="google-reviews-score">
+          <div class="google-g-logo">
+            <i class="bi bi-google"></i>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.8rem; font-weight: 800; color: var(--navy-dark); line-height: 1;">4.9</span>
+              <span style="color: var(--accent-gold); font-size: 1.2rem;">★★★★★</span>
+            </div>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">
+              Based on <strong>520+ Verified Reviews</strong> on Google Maps
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://maps.app.goo.gl/kUwddP8YLWjhcDiG6" target="_blank" class="btn btn-primary" style="font-size: 0.9rem;">
+            <i class="bi bi-google"></i> Read All Google Reviews
+          </a>
+          <a href="https://maps.app.goo.gl/kUwddP8YLWjhcDiG6" target="_blank" class="btn btn-navy" style="font-size: 0.9rem;">
+            <i class="bi bi-pencil-square"></i> Leave a Google Review
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Verified Review Cards -->
+      <div class="reviews-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        
+        <!-- Review 1 -->
         <div class="review-card">
           <div class="review-header">
-            <div class="reviewer-avatar">EM</div>
+            <div class="reviewer-avatar" style="background: #0284c7; color: #ffffff;">SL</div>
             <div class="reviewer-info">
-              <h4>Emma & Mark</h4>
+              <h4>Sarah & Liam <span class="review-verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</span></h4>
+              <span>Australia • Google Review</span>
+            </div>
+          </div>
+          <div class="review-stars" style="color: var(--accent-gold); margin: 10px 0;">★★★★★</div>
+          <p class="review-text">"Unbelievable turtle snorkeling experience in Mirissa! I'm not a strong swimmer, but our guide was so patient and attentive, holding a safety ring for me. We swam right next to 3 giant green sea turtles! They transferred all underwater GoPro photos to our phones right after. 10/10 recommend Diving Paradise!"</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background: #10b981; color: #ffffff;">JK</div>
+            <div class="reviewer-info">
+              <h4>Julian K. <span class="review-verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</span></h4>
+              <span>Germany • Google Review</span>
+            </div>
+          </div>
+          <div class="review-stars" style="color: var(--accent-gold); margin: 10px 0;">★★★★★</div>
+          <p class="review-text">"Super professional crew and top equipment. We booked the whale snorkeling tour and saw a majestic blue whale gliding peacefully below us. Safety instructions were clear, boat was very clean, and the local guides really know where to find marine life responsibly."</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background: #8b5cf6; color: #ffffff;">ER</div>
+            <div class="reviewer-info">
+              <h4>Elena Rostova <span class="review-verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</span></h4>
+              <span>Poland • Google Review</span>
+            </div>
+          </div>
+          <div class="review-stars" style="color: var(--accent-gold); margin: 10px 0;">★★★★★</div>
+          <p class="review-text">"Did the Discovery Scuba Dive at Mirissa Reef. As a beginner, I was a bit nervous, but our PADI dive instructor was calm, thorough, and stayed with me underwater the whole time. Saw colorful fish, moray eels, and living corals. Fantastic center!"</p>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background: #f59e0b; color: #ffffff;">MB</div>
+            <div class="reviewer-info">
+              <h4>Matthew B. <span class="review-verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</span></h4>
               <span>United Kingdom • Google Review</span>
             </div>
           </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Unbelievable experience! I cannot swim well, but our guide held my hand the whole time and I got to swim right next to 4 giant sea turtles. They gave us all the photos for free!"</p>
+          <div class="review-stars" style="color: var(--accent-gold); margin: 10px 0;">★★★★★</div>
+          <p class="review-text">"Prompt hotel pick-up from Weligama was seamless. The equipment was clean and fit perfectly. Friendly staff, honest prices, free GoPro photos, and zero hassle. Hands down the best marine tour operator in Southern Sri Lanka!"</p>
         </div>
 
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar">DS</div>
-            <div class="reviewer-info">
-              <h4>Daniel Schmidt</h4>
-              <span>Germany • TripAdvisor</span>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"We booked the whale snorkeling tour and it was life-changing. Saw a blue whale gliding right beneath us. Extremely professional safety instructions and great crew."</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-avatar">SL</div>
-            <div class="reviewer-info">
-              <h4>Sophie Laurent</h4>
-              <span>France • Google Review</span>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Did discovery scuba diving for the first time. The instructor was calm and reassuring. Saw so many colorful fish and corals. Highly recommend Diving Paradise Mirissa!"</p>
-        </div>
       </div>
     </div>
   </section>
@@ -744,7 +827,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="brand-logo" style="margin-bottom: 16px;">
-            <div class="logo-icon"><i class="bi bi-water"></i></div>
+            <img src="assets/images/logo.png" alt="Diving & Snorkeling Paradise Mirissa Logo" class="brand-logo-img" style="width: 52px; height: 52px; border-radius: 50%;">
             <div class="brand-text">
               <span class="brand-title" style="color: #ffffff;">DIVING PARADISE</span>
               <span class="brand-subtitle">& SNORKELING MIRISSA</span>
@@ -756,11 +839,11 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#tours">Tour Packages</a></li>
-            <li><a href="#calculator">Price Estimator</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#reviews">Guest Reviews</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#tours">Tour Packages</a></li>
+            <li><a href="index.html#calculator">Price Estimator</a></li>
+            <li><a href="gallery.html">Gallery Page</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
 

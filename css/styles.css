@@ -310,6 +310,21 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
 }
 
+.brand-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--azure-bright);
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.4);
+  transition: var(--transition-normal);
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: var(--shadow-glow);
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -1297,3 +1312,513 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
 }
+
+/* -------------------------------------------------------------------
+   Page Header & Inner Page Hero
+   ------------------------------------------------------------------- */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-deep) 60%, var(--navy-mid) 100%);
+  color: #ffffff;
+  padding: 70px 0 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.page-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--azure-bright);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.breadcrumbs a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumbs a:hover {
+  color: #ffffff;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.page-title span {
+  color: var(--azure-bright);
+}
+
+.page-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------------
+   Gallery Filter & Lightbox Styles
+   ------------------------------------------------------------------- */
+.gallery-filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.gallery-filter-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 180, 216, 0.25);
+  background: #ffffff;
+  color: var(--navy-dark);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+  background: var(--azure-bright);
+  color: #ffffff;
+  border-color: var(--azure-bright);
+  box-shadow: var(--shadow-glow);
+}
+
+.gallery-card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(7, 19, 37, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--azure-bright);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(0, 180, 216, 0.3);
+}
+
+.gallery-card-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 180, 216, 0.9);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition-normal);
+}
+
+.gallery-item:hover .gallery-card-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 11, 22, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  background: var(--navy-card);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-img-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 65vh;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lightbox-img-wrapper img {
+  max-height: 65vh;
+  width: auto;
+  object-fit: contain;
+}
+
+.lightbox-info {
+  padding: 24px;
+  background: var(--navy-dark);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.lightbox-info h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.lightbox-info p {
+  color: var(--azure-bright);
+  font-size: 0.9rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.7);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: #ff4757;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: #ffffff;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.lightbox-nav:hover {
+  background: var(--azure-bright);
+}
+
+.lightbox-prev { left: 15px; }
+.lightbox-next { right: 15px; }
+
+/* -------------------------------------------------------------------
+   Contact Page Styles
+   ------------------------------------------------------------------- */
+.contact-form-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(10, 25, 47, 0.08);
+}
+
+.contact-form-card h3 {
+  font-size: 1.5rem;
+  color: var(--navy-dark);
+  margin-bottom: 6px;
+}
+
+.contact-form-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 6px;
+}
+
+.form-group label i {
+  color: var(--azure-bright);
+  margin-right: 4px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: var(--bg-light);
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--azure-bright);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-success-alert {
+  background: #d1fae5;
+  border: 1px solid #10b981;
+  color: #065f46;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.gopro-banner {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 50px;
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  .gopro-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lightbox-info {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* -------------------------------------------------------------------
+   Why Choose Us Intro Box & Feature Styling
+   ------------------------------------------------------------------- */
+.why-intro-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(10, 25, 47, 0.08);
+  margin-bottom: 40px;
+}
+
+.why-intro-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .why-intro-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.why-intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  color: #b45309;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.why-highlights-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-light);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  color: var(--navy-dark);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.why-intro-media {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(10, 25, 47, 0.1);
+  display: flex;
+}
+
+.why-intro-featured-img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform 0.4s ease;
+}
+
+.why-intro-media:hover .why-intro-featured-img {
+  transform: scale(1.04);
+}
+
+/* -------------------------------------------------------------------
+   Google Business Reviews Section Styling
+   ------------------------------------------------------------------- */
+.google-reviews-header-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(10, 25, 47, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 768px) {
+  .google-reviews-header-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.google-reviews-score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.google-g-logo {
+  width: 48px;
+  height: 48px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #4285f4;
+  border: 1px solid #e2e8f0;
+}
+
+.review-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+
+

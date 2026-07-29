@@ -212,7 +212,161 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 7. Active Navigation Link Highlighter & Scroll Observer
+  const currentFileName = window.location.pathname.split('/').pop() || 'index.html';
+
+  if (currentFileName === 'index.html' || currentFileName === '') {
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let scrollY = window.scrollY;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navAnchors.forEach(a => {
+            if (a.getAttribute('href') === '#' + sectionId) {
+              a.classList.add('active');
+            } else {
+              a.classList.remove('active');
+            }
+          });
+        }
+      });
+    });
+  } else {
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentFileName) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  // 8. Gallery Page Filter Bar
+  const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-grid .gallery-item');
+  
+  if (galleryFilterBtns.length > 0) {
+    galleryFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        galleryFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cat = btn.getAttribute('data-filter');
+        galleryItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (cat === 'all' || itemCat === cat) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // 9. Lightbox Viewer Logic
+  const lightboxModal = document.getElementById('lightbox-modal');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  let currentGalleryIndex = 0;
+  let visibleGalleryItems = [];
+
+  function openLightbox(index) {
+    visibleGalleryItems = Array.from(document.querySelectorAll('.gallery-grid .gallery-item')).filter(el => el.style.display !== 'none');
+    if (visibleGalleryItems.length === 0) return;
+
+    currentGalleryIndex = (index + visibleGalleryItems.length) % visibleGalleryItems.length;
+    const currentItem = visibleGalleryItems[currentGalleryIndex];
+    const imgEl = currentItem.querySelector('img');
+    const titleEl = currentItem.querySelector('h4');
+    const descEl = currentItem.querySelector('p');
+
+    if (lightboxImg && imgEl) lightboxImg.src = imgEl.src;
+    if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
+    if (lightboxDesc && descEl) lightboxDesc.textContent = descEl.textContent;
+
+    if (lightboxModal) lightboxModal.classList.add('active');
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      const visibleList = Array.from(document.querySelectorAll('.gallery-grid .gallery-item')).filter(el => el.style.display !== 'none');
+      const idxInVisible = visibleList.indexOf(item);
+      openLightbox(idxInVisible >= 0 ? idxInVisible : index);
+    });
+  });
+
+  if (lightboxClose && lightboxModal) {
+    lightboxClose.addEventListener('click', () => {
+      lightboxModal.classList.remove('active');
+    });
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        lightboxModal.classList.remove('active');
+      }
+    });
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(currentGalleryIndex - 1);
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(currentGalleryIndex + 1);
+    });
+  }
+
+  // 10. Contact Page Form Handler
+  const mainContactForm = document.getElementById('main-contact-form');
+  const contactSuccessAlert = document.getElementById('contact-success-alert');
+
+  if (mainContactForm) {
+    mainContactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name')?.value || 'Guest';
+      const tour = document.getElementById('contact-tour')?.value || 'General Inquiry';
+      const date = document.getElementById('contact-date')?.value || 'Flexible';
+      const guests = document.getElementById('contact-guests')?.value || '1';
+      const msg = document.getElementById('contact-message')?.value || '';
+
+      if (contactSuccessAlert) {
+        contactSuccessAlert.style.display = 'flex';
+      }
+
+      // Automatically construct WhatsApp message fallback option
+      const waText = `Hi Diving Paradise Mirissa!\nMy Name: ${name}\nTour Interested: ${tour}\nPreferred Date: ${date}\nGuests: ${guests}\nMessage: ${msg}`;
+      const waUrl = `https://wa.me/94742617251?text=${encodeURIComponent(waText)}`;
+      
+      const whatsappBtn = document.getElementById('contact-wa-btn');
+      if (whatsappBtn) {
+        whatsappBtn.href = waUrl;
+      }
+
+      mainContactForm.reset();
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 1000);
+    });
+  }
+
   // Initial setup
   calculateTotal();
   updateAllDisplayedPrices();
 });
+
