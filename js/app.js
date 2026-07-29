@@ -2,6 +2,25 @@
    Diving & Snorkeling Paradise Mirissa - Application Logic
    ------------------------------------------------------------------- */
 
+// Global Mobile Drawer Controls (100% reliable full-screen overlay)
+window.openMobileDrawer = function(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const drawer = document.getElementById('mobile-drawer');
+  if (drawer) drawer.classList.add('active');
+};
+
+window.closeMobileDrawer = function(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const drawer = document.getElementById('mobile-drawer');
+  if (drawer) drawer.classList.remove('active');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   // Global State
   let currentCurrency = 'USD';
@@ -24,8 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DOM Elements
   const currencySelect = document.getElementById('currency-select');
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const navLinks = document.getElementById('nav-links');
   const tourFilterBtns = document.querySelectorAll('.tab-btn');
   const tourCards = document.querySelectorAll('.tour-card');
   const bookingModal = document.getElementById('booking-modal');
@@ -44,13 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const calcDiscountEl = document.getElementById('calc-discount');
   const calcTotalEl = document.getElementById('calc-total');
   const calcBookWhatsappBtn = document.getElementById('calc-book-whatsapp');
-
-  // 1. Mobile Menu Toggle
-  if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  }
 
   // 2. Currency Selector
   if (currencySelect) {
@@ -211,6 +221,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 6.5 Mobile Navigation Drawer Listeners
+  const mobileToggleBtn = document.getElementById('mobile-toggle');
+  const navLinksList = document.getElementById('nav-links');
+
+  if (mobileToggleBtn) {
+    mobileToggleBtn.addEventListener('click', window.toggleMobileMenu);
+  }
+
+  if (navLinksList) {
+    document.addEventListener('click', (e) => {
+      if (navLinksList.style.display === 'flex' && !navLinksList.contains(e.target) && !mobileToggleBtn?.contains(e.target)) {
+        navLinksList.classList.remove('active', 'show');
+        navLinksList.style.setProperty('display', 'none', 'important');
+        const icon = document.querySelector('#mobile-toggle i');
+        if (icon) icon.className = 'bi bi-list';
+      }
+    });
+
+    navLinksList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinksList.classList.remove('active', 'show');
+        navLinksList.style.setProperty('display', 'none', 'important');
+        const icon = document.querySelector('#mobile-toggle i');
+        if (icon) icon.className = 'bi bi-list';
+      });
+    });
+  }
 
   // 7. Active Navigation Link Highlighter & Glassy Header Observer
   const currentFileName = window.location.pathname.split('/').pop() || 'index.html';

@@ -111,11 +111,34 @@
         <i class="bi bi-calendar-check"></i> Book Now
       </button>
 
-      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
-        <i class="bi bi-list"></i>
+      <button class="mobile-toggle" id="mobile-toggle" onclick="openMobileDrawer(event)" aria-label="Toggle navigation">
+        <i class="bi bi-list" id="mobile-toggle-icon"></i>
       </button>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-text">
+        <span class="brand-title">DIVING PARADISE</span>
+        <span class="brand-subtitle">MIRISSA</span>
+      </div>
+      <button class="mobile-drawer-close" onclick="closeMobileDrawer(event)" aria-label="Close navigation"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html#home" onclick="closeMobileDrawer()" class="active"><i class="bi bi-house-door-fill"></i> Home</a></li>
+      <li><a href="index.html#why-us" onclick="closeMobileDrawer()"><i class="bi bi-patch-check-fill"></i> Why Choose Us</a></li>
+      <li><a href="index.html#tours" onclick="closeMobileDrawer()"><i class="bi bi-compass-fill"></i> Tour Packages</a></li>
+      <li><a href="gallery.html" onclick="closeMobileDrawer()"><i class="bi bi-images"></i> Gallery</a></li>
+      <li><a href="contact.html" onclick="closeMobileDrawer()"><i class="bi bi-envelope-fill"></i> Contact</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="https://wa.me/94742617251?text=Hello!%20I%20want%20to%20book%20a%20tour%20in%20Mirissa" target="_blank" class="btn btn-whatsapp" style="width: 100%;">
+        <i class="bi bi-whatsapp"></i> Chat Live on WhatsApp
+      </a>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
