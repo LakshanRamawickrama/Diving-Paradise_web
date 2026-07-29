@@ -271,9 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Lightbox Viewer Logic
+  // 9. Lightbox Viewer & Video Player Logic
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxVideo = document.getElementById('lightbox-video');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxDesc = document.getElementById('lightbox-desc');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -291,12 +292,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgEl = currentItem.querySelector('img');
     const titleEl = currentItem.querySelector('h4');
     const descEl = currentItem.querySelector('p');
+    const videoSrc = currentItem.getAttribute('data-video-src');
 
-    if (lightboxImg && imgEl) lightboxImg.src = imgEl.src;
+    if (videoSrc && lightboxVideo) {
+      if (lightboxImg) lightboxImg.style.display = 'none';
+      lightboxVideo.style.display = 'block';
+      lightboxVideo.src = videoSrc;
+      lightboxVideo.play().catch(() => {});
+    } else {
+      if (lightboxVideo) {
+        lightboxVideo.pause();
+        lightboxVideo.style.display = 'none';
+      }
+      if (lightboxImg && imgEl) {
+        lightboxImg.style.display = 'block';
+        lightboxImg.src = imgEl.src;
+      }
+    }
+
     if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
     if (lightboxDesc && descEl) lightboxDesc.textContent = descEl.textContent;
 
     if (lightboxModal) lightboxModal.classList.add('active');
+  }
+
+  function closeLightbox() {
+    if (lightboxVideo) {
+      lightboxVideo.pause();
+      lightboxVideo.src = '';
+    }
+    if (lightboxModal) lightboxModal.classList.remove('active');
   }
 
   galleryItems.forEach((item, index) => {
@@ -307,14 +332,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (lightboxClose && lightboxModal) {
-    lightboxClose.addEventListener('click', () => {
-      lightboxModal.classList.remove('active');
-    });
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxModal) {
     lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) {
-        lightboxModal.classList.remove('active');
-      }
+      if (e.target === lightboxModal) closeLightbox();
     });
   }
 

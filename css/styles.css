@@ -171,6 +171,8 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   transition: var(--transition-normal);
   text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-primary {
@@ -1579,6 +1581,31 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--azure-bright);
 }
 
+/* Video Gallery Styling */
+.video-badge {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4) !important;
+}
+
+.video-play-icon {
+  width: 56px !important;
+  height: 56px !important;
+  background: rgba(0, 180, 216, 0.9) !important;
+  color: #ffffff !important;
+  font-size: 2.2rem !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.6) !important;
+  opacity: 0.95 !important;
+}
+
+.gallery-item:hover .video-play-icon {
+  transform: scale(1.15) !important;
+  background: #ffffff !important;
+  color: var(--navy-dark) !important;
+}
+
 .lightbox-prev { left: 15px; }
 .lightbox-next { right: 15px; }
 
@@ -1675,6 +1702,11 @@ textarea.form-control {
   .gopro-banner {
     flex-direction: column;
     text-align: center;
+  }
+  .gopro-banner .btn {
+    width: 100%;
+    max-width: 320px;
+    white-space: nowrap;
   }
   .lightbox-info {
     flex-direction: column;

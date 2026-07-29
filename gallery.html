@@ -71,7 +71,7 @@
         <img src="assets/images/favicon.png" alt="Diving & Snorkeling Paradise Mirissa Logo" class="brand-logo-img">
         <div class="brand-text">
           <span class="brand-title">DIVING PARADISE</span>
-          <span class="brand-subtitle">& SNORKELING MIRISSA</span>
+          <span class="brand-subtitle">MIRISSA</span>
         </div>
       </a>
 
@@ -117,7 +117,10 @@
       <!-- Category Filter Tabs -->
       <div class="gallery-filter-bar">
         <button class="gallery-filter-btn active" data-filter="all">
-          <i class="bi bi-grid-fill"></i> All Photos
+          <i class="bi bi-grid-fill"></i> All Media
+        </button>
+        <button class="gallery-filter-btn" data-filter="videos" style="background: linear-gradient(135deg, var(--navy-deep), #ef4444); color: #ffffff;">
+          <i class="bi bi-play-btn-fill"></i> 4K GoPro Videos
         </button>
         <button class="gallery-filter-btn" data-filter="turtles">
           <i class="bi bi-water"></i> Sea Turtles
@@ -136,8 +139,47 @@
         </button>
       </div>
 
-      <!-- Photo Grid -->
+      <!-- Gallery Grid (Photos & Videos) -->
       <div class="gallery-grid">
+
+        <!-- Video 1: Turtle Snorkeling 4K -->
+        <div class="gallery-item video-item" data-category="videos turtles" data-video-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4">
+          <span class="gallery-card-badge video-badge"><i class="bi bi-play-circle-fill"></i> 4K GoPro Video</span>
+          <div class="gallery-card-icon video-play-icon"><i class="bi bi-play-fill"></i></div>
+          <img src="assets/images/turtle.png" alt="4K GoPro Underwater Turtle Video Clip" loading="lazy">
+          <div class="gallery-overlay">
+            <div>
+              <h4><i class="bi bi-camera-reel-fill text-azure"></i> Swimming with Sea Turtles (4K Clip)</h4>
+              <p>Mirissa Secret Reef • Complimentary GoPro Media</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2: Blue Whale Encounter 4K -->
+        <div class="gallery-item video-item" data-category="videos whales" data-video-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4">
+          <span class="gallery-card-badge video-badge"><i class="bi bi-play-circle-fill"></i> 4K GoPro Video</span>
+          <div class="gallery-card-icon video-play-icon"><i class="bi bi-play-fill"></i></div>
+          <img src="assets/images/whale.png" alt="Blue Whale Marine Safari Video Clip" loading="lazy">
+          <div class="gallery-overlay">
+            <div>
+              <h4><i class="bi bi-camera-reel-fill text-azure"></i> Blue Whale Safari Underwater (4K Clip)</h4>
+              <p>Deep Continental Shelf • Mirissa Waters</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 3: Scuba Diving Reef 4K -->
+        <div class="gallery-item video-item" data-category="videos scuba" data-video-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4">
+          <span class="gallery-card-badge video-badge"><i class="bi bi-play-circle-fill"></i> 4K GoPro Video</span>
+          <div class="gallery-card-icon video-play-icon"><i class="bi bi-play-fill"></i></div>
+          <img src="assets/images/scuba.png" alt="Scuba Diving Coral Reef Video Clip" loading="lazy">
+          <div class="gallery-overlay">
+            <div>
+              <h4><i class="bi bi-camera-reel-fill text-azure"></i> Discovery Scuba Diving Reef (4K Clip)</h4>
+              <p>Mirissa South Coral Reef Site</p>
+            </div>
+          </div>
+        </div>
         
         <!-- Turtle 1 -->
         <div class="gallery-item" data-category="turtles">
@@ -248,15 +290,11 @@
       <!-- GoPro Free Photos Banner -->
       <div class="gopro-banner">
         <div>
-          <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">
-            <i class="bi bi-gift-fill"></i> Complimentary Perk
-          </span>
-          <h3 style="font-size: 1.8rem; margin: 12px 0 8px 0; color: #ffffff;">Want Your Own Underwater Photos?</h3>
-          <p style="color: rgba(255,255,255,0.9); max-width: 600px; line-height: 1.5;">
-            Our guides carry waterproof 4K GoPro cameras on every tour. We send all uncompressed photos & videos directly to your phone via AirDrop or WhatsApp for FREE!
-          </p>
+          <span class="banner-badge"><i class="bi bi-camera-reels-fill"></i> Complimentary 4K GoPro Footage</span>
+          <h2>Free 4K HD GoPro Photos & Video Clips Transferred to Your Phone!</h2>
+          <p>Every snorkeling and diving guest receives free high-definition underwater photos and video clips taken by our PADI guides, transferred directly to your smartphone right after the tour!</p>
         </div>
-        <a href="https://wa.me/94742617251?text=Hi!%20I%20want%20to%20book%20a%20tour%20and%20get%20free%20GoPro%20photos" target="_blank" class="btn btn-primary" style="white-space: nowrap; background: #ffffff; color: var(--navy-dark);">
+        <a href="https://wa.me/94742617251?text=Hello!%20I%20am%20interested%20in%20this%20tour%20experience" target="_blank" class="btn btn-whatsapp">
           <i class="bi bi-whatsapp"></i> Book & Get Free Photos
         </a>
       </div>
@@ -273,6 +311,7 @@
 
       <div class="lightbox-img-wrapper">
         <img id="lightbox-img" src="" alt="Gallery Preview">
+        <video id="lightbox-video" controls style="display: none; max-width: 100%; max-height: 65vh; border-radius: var(--radius-md);"></video>
       </div>
 
       <div class="lightbox-info">
@@ -296,7 +335,7 @@
             <img src="assets/images/logo.png" alt="Diving & Snorkeling Paradise Mirissa Logo" class="brand-logo-img" style="width: 52px; height: 52px; border-radius: 50%;">
             <div class="brand-text">
               <span class="brand-title" style="color: #ffffff;">DIVING PARADISE</span>
-              <span class="brand-subtitle">& SNORKELING MIRISSA</span>
+              <span class="brand-subtitle">MIRISSA</span>
             </div>
           </div>
           <p>Mirissa's premier center for sea turtle snorkeling, blue whale marine safaris, scuba diving, and deep sea fishing excursions.</p>
