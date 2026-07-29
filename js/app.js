@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (navLinksList) {
     document.addEventListener('click', (e) => {
-      if (navLinksList.style.display === 'flex' && !navLinksList.contains(e.target) && !mobileToggleBtn?.contains(e.target)) {
+      if (window.innerWidth <= 991 && navLinksList.style.display === 'flex' && !navLinksList.contains(e.target) && !mobileToggleBtn?.contains(e.target)) {
         navLinksList.classList.remove('active', 'show');
         navLinksList.style.setProperty('display', 'none', 'important');
         const icon = document.querySelector('#mobile-toggle i');
@@ -242,10 +242,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navLinksList.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinksList.classList.remove('active', 'show');
-        navLinksList.style.setProperty('display', 'none', 'important');
-        const icon = document.querySelector('#mobile-toggle i');
-        if (icon) icon.className = 'bi bi-list';
+        if (window.innerWidth <= 991) {
+          navLinksList.classList.remove('active', 'show');
+          navLinksList.style.setProperty('display', 'none', 'important');
+          const icon = document.querySelector('#mobile-toggle i');
+          if (icon) icon.className = 'bi bi-list';
+        }
       });
     });
   }
@@ -489,6 +491,65 @@ document.addEventListener('DOMContentLoaded', () => {
         behavior: 'smooth'
       });
     });
+  }
+
+  // 13. Scroll Reveal Animation Observer
+  const revealElements = document.querySelectorAll('.tour-card, .why-card, .review-card, .gallery-item, .calculator-card, .contact-info-card, .contact-form-card, .section-title, .faq-item');
+  
+  revealElements.forEach((el, index) => {
+    el.classList.add('reveal-on-scroll');
+    const delay = (index % 3) + 1;
+    el.classList.add(`reveal-delay-${delay}`);
+  });
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('revealed'));
+  }
+
+  // 14. Animated Stat / Number Counter
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target || el.textContent.replace(/[^0-9.]/g, ''));
+    const isDecimal = target % 1 !== 0;
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      el.textContent = el.dataset.suffix
+        ? (isDecimal ? current.toFixed(1) : Math.floor(current)) + el.dataset.suffix
+        : (isDecimal ? current.toFixed(1) : Math.floor(current)) + (el.dataset.unit || '');
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const statEls = document.querySelectorAll('.stat-number, [data-target]');
+  if (statEls.length > 0 && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    statEls.forEach(el => counterObserver.observe(el));
   }
 
   // Initial setup

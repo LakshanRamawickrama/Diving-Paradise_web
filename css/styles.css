@@ -381,6 +381,12 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(10px);
 }
 
+@media (min-width: 992px) {
+  .nav-links {
+    display: flex !important;
+  }
+}
+
 .nav-links a {
   font-size: 0.88rem;
   font-weight: 600;
@@ -1093,18 +1099,126 @@ h1, h2, h3, h4, h5, h6 {
 /* Contact Section */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "info form"
+    "faq  form";
+  gap: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: start;
 }
 
 .contact-info-card {
+  grid-area: info;
   background: var(--navy-dark);
   color: #ffffff;
-  padding: 40px;
+  padding: 36px 32px;
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  align-self: start;
+  height: auto !important;
+}
+
+.contact-form-card {
+  grid-area: form;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  align-self: start;
+  height: auto !important;
+}
+
+/* Left column: stacks info card + FAQ card vertically */
+.contact-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  align-self: start;
+}
+
+/* FAQ card inside the left column */
+.contact-faq-card {
+  grid-area: faq;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(10, 25, 47, 0.08);
+  align-self: start;
+}
+
+.contact-faq-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.contact-faq-header i {
+  font-size: 1.3rem;
+  color: var(--azure-bright);
+}
+
+.contact-faq-header h4 {
+  font-size: 1.1rem;
+  color: var(--navy-dark);
+  margin: 0;
+}
+
+.contact-faq-item {
+  border-bottom: 1px solid rgba(10, 25, 47, 0.07);
+}
+
+.contact-faq-item:last-child {
+  border-bottom: none;
+}
+
+.contact-faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy-dark);
+  cursor: pointer;
+  text-align: left;
+  gap: 12px;
+}
+
+.contact-faq-q i {
+  font-size: 0.85rem;
+  color: var(--azure-bright);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.contact-faq-item.open .contact-faq-q i {
+  transform: rotate(180deg);
+}
+
+.contact-faq-a {
+  display: none;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  padding-bottom: 12px;
+}
+
+.contact-faq-item.open .contact-faq-a {
+  display: block;
 }
 
 .contact-item {
@@ -1595,9 +1709,13 @@ h1, h2, h3, h4, h5, h6 {
 .contact-form-card {
   background: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 32px 28px;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(10, 25, 47, 0.08);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .contact-form-card h3 {
@@ -1676,6 +1794,38 @@ textarea.form-control {
   gap: 30px;
   margin-top: 50px;
   box-shadow: var(--shadow-md);
+}
+
+/* -------------------------------------------------------------------
+   Tablet Breakpoint – Contact Grid Stacks at ≤ 960px
+   ------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "info"
+      "form"
+      "faq" !important;
+    gap: 24px !important;
+  }
+
+  .contact-info-card,
+  .contact-form-card,
+  .contact-faq-card {
+    width: 100% !important;
+  }
+
+  .contact-info-card {
+    padding: 28px 24px !important;
+  }
+
+  .contact-form-card {
+    padding: 28px 24px !important;
+  }
+
+  .contact-faq-card {
+    padding: 20px 18px !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1875,10 +2025,21 @@ textarea.form-control {
    ------------------------------------------------------------------- */
 @media (max-width: 991px) {
   .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
     background: #071325 !important;
     overflow: visible !important;
+    z-index: 99999 !important;
+  }
+
+  /* Push page content down so it's not hidden behind the fixed navbar */
+  body {
+    padding-top: 62px !important;
   }
 
   .navbar-content {
@@ -1904,6 +2065,7 @@ textarea.form-control {
     cursor: pointer !important;
     z-index: 100005 !important;
   }
+
 
   .nav-links {
     position: absolute !important;
@@ -2296,4 +2458,335 @@ textarea.form-control {
 .mobile-drawer-footer {
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* -------------------------------------------------------------------
+   Global Micro-Animations & Dynamic Hover Motions (Desktop & Mobile)
+   ------------------------------------------------------------------- */
+
+/* Smooth Card Hover & Micro-Lift Effects */
+.tour-card,
+.why-card,
+.why-intro-card,
+.calculator-card,
+.gallery-card,
+.contact-info-card,
+.contact-form-card,
+.hero-card,
+.faq-item {
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              border-color 0.35s ease !important;
+  will-change: transform, box-shadow;
+}
+
+.tour-card:hover,
+.why-card:hover,
+.why-intro-card:hover,
+.calculator-card:hover,
+.gallery-card:hover,
+.hero-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 20px 45px rgba(0, 180, 216, 0.22), 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+  border-color: var(--azure-bright) !important;
+}
+
+/* Contact cards: lift only — no scale to prevent grid overflow */
+.contact-info-card:hover,
+.contact-form-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 180, 216, 0.22), 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+  border-color: var(--azure-bright) !important;
+}
+
+/* Touch active feedback for mobile */
+@media (hover: none) or (max-width: 768px) {
+  .tour-card:active,
+  .why-card:active,
+  .why-intro-card:active,
+  .calculator-card:active,
+  .gallery-card:active,
+  .contact-info-card:active,
+  .contact-form-card:active,
+  .hero-card:active {
+    transform: translateY(-3px) scale(0.99) !important;
+    box-shadow: 0 12px 30px rgba(0, 180, 216, 0.3) !important;
+  }
+}
+
+/* Button Animations & Interactive States */
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.25s ease, 
+              background-color 0.25s ease !important;
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 180, 216, 0.45) !important;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.97) !important;
+  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3) !important;
+}
+
+/* Shimmer Light Reflection Effect on Primary & WhatsApp Buttons */
+.btn-primary::after,
+.btn-whatsapp::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-whatsapp:hover::after {
+  left: 125%;
+}
+
+/* Continuous Soft Pulse Keyframes for Floating WhatsApp & Call To Actions */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0), 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.floating-whatsapp {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1) rotate(5deg) !important;
+}
+
+.back-to-top-btn {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease !important;
+}
+
+.back-to-top-btn:hover {
+  transform: translateY(-5px) scale(1.1) !important;
+  background: var(--azure-bright) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 20px rgba(0, 180, 216, 0.5) !important;
+}
+
+/* -------------------------------------------------------------------
+   Scroll Reveal Animations & Keyframes
+   ------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.reveal-delay-1 { transition-delay: 0.08s !important; }
+.reveal-delay-2 { transition-delay: 0.18s !important; }
+.reveal-delay-3 { transition-delay: 0.28s !important; }
+
+/* -------------------------------------------------------------------
+   Hero Section Entrance & Stagger Animations
+   ------------------------------------------------------------------- */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes shimmerSlide {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { opacity: 1; transform: scale(1.05); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* Hero Content Entrance Stagger */
+.hero-badge {
+  animation: heroFadeUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s both;
+}
+
+.hero-title {
+  animation: heroFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.25s both;
+}
+
+.hero-description {
+  animation: heroFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s both;
+}
+
+.hero-ctas {
+  animation: heroFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.55s both;
+}
+
+.hero-features {
+  animation: heroFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.7s both;
+}
+
+/* Floating Bob on Hero Card & Turtle Image */
+.hero-card,
+.why-intro-featured-img {
+  animation: floatBob 5s ease-in-out infinite;
+}
+
+.why-intro-featured-img {
+  animation-delay: -2s;
+}
+
+/* Nav link pill hover animation */
+.nav-links a {
+  transition: background 0.25s ease, color 0.2s ease, 
+              box-shadow 0.25s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+}
+
+/* Badge items entrance */
+.badge-item {
+  animation: heroFadeUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+
+.badge-item:nth-child(1) { animation-delay: 0.1s; }
+.badge-item:nth-child(2) { animation-delay: 0.2s; }
+.badge-item:nth-child(3) { animation-delay: 0.3s; }
+.badge-item:nth-child(4) { animation-delay: 0.4s; }
+.badge-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Stat / highlight pills bounce in */
+.highlight-pill {
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.25s ease, background 0.25s ease !important;
+}
+
+.highlight-pill:hover {
+  transform: translateY(-3px) scale(1.06) !important;
+  box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3) !important;
+}
+
+/* Tour price badge pulse */
+.tour-price {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.tour-card:hover .tour-price {
+  transform: scale(1.08) !important;
+}
+
+/* Gallery card image zoom */
+.gallery-card img,
+.gallery-card .gallery-img {
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.gallery-card:hover img,
+.gallery-card:hover .gallery-img {
+  transform: scale(1.08) !important;
+}
+
+/* Contact icon bounce on hover */
+.contact-icon {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.15) rotate(-8deg) !important;
+}
+
+/* FAQ arrow rotation */
+.faq-question {
+  transition: background 0.25s ease !important;
+}
+
+.faq-question i {
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg) !important;
+}
+
+/* Floating WhatsApp scale on hover */
+.floating-whatsapp:hover {
+  transform: scale(1.15) rotate(8deg) !important;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Section tag entrance */
+.section-tag {
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.section-tag:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.25) !important;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
