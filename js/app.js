@@ -32,13 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Base Package Prices in USD
   const tourPrices = {
-    'turtle-snorkeling': { baseUSD: 25, title: 'Snorkeling with Sea Turtles' },
-    'whale-snorkeling': { baseUSD: 85, title: 'Snorkeling with Whales' },
-    'scuba-discovery': { baseUSD: 60, title: 'Discovery Scuba Diving' },
-    'scuba-certified': { baseUSD: 50, title: 'Certified Reef Diving' },
-    'deep-sea-fishing': { baseUSD: 75, title: 'Deep Sea & Mullet Fishing' },
-    'sunset-boat': { baseUSD: 35, title: 'Sunset Boat Tour & Kayaking' },
-    'sri-lanka-tour': { baseUSD: 120, title: 'Sri Lanka Island Tour Package' }
+    'turtle-snorkeling': { baseUSD: 25, title: 'Snorkeling with Turtle' },
+    'fun-diving': { baseUSD: 50, title: 'Fun Diving' },
+    'wreck-diving': { baseUSD: 65, title: 'Wreck Diving Adventure' },
+    'diving-course': { baseUSD: 120, title: 'Diving Course' },
+    'whale-dolphin-snorkeling': { baseUSD: 85, title: 'Snorkeling with Whales & Dolphins' },
+    'sunset-lighthouse-boat': { baseUSD: 35, title: 'Sunset & Lighthouse Boat Tour' }
   };
 
   // DOM Elements
@@ -309,8 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const cat = btn.getAttribute('data-filter');
         galleryItems.forEach(item => {
-          const itemCat = item.getAttribute('data-category');
-          if (cat === 'all' || itemCat === cat) {
+          const itemCat = item.getAttribute('data-category') || '';
+          const cats = itemCat.split(' ');
+          if (cat === 'all' || cats.includes(cat)) {
             item.style.display = 'block';
           } else {
             item.style.display = 'none';

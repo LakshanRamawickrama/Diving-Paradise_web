@@ -869,6 +869,13 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
+  align-items: center;
+}
+
+.calc-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .calc-inputs .form-row {
@@ -876,6 +883,10 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 20px;
+}
+
+.calc-inputs .form-row:last-child {
+  margin-bottom: 0;
 }
 
 .calc-inputs label {
@@ -1562,14 +1573,14 @@ h1, h2, h3, h4, h5, h6 {
   height: 100vh;
   background: rgba(4, 11, 22, 0.95);
   backdrop-filter: blur(12px);
-  z-index: 3000;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  padding: 20px;
+  padding: 12px;
 }
 
 .lightbox-modal.active {
@@ -1579,13 +1590,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .lightbox-content {
   position: relative;
-  max-width: 950px;
+  max-width: 1050px;
   width: 100%;
+  height: 92vh;
+  max-height: 94vh;
   background: var(--navy-card);
   border: 1px solid rgba(0, 180, 216, 0.3);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
   display: flex;
   flex-direction: column;
 }
@@ -1593,7 +1606,9 @@ h1, h2, h3, h4, h5, h6 {
 .lightbox-img-wrapper {
   position: relative;
   width: 100%;
-  max-height: 65vh;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
   background: #000000;
   display: flex;
   align-items: center;
@@ -1602,13 +1617,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lightbox-img-wrapper img {
-  max-height: 65vh;
-  width: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .lightbox-info {
-  padding: 24px;
+  flex-shrink: 0;
+  padding: 18px 24px;
   background: var(--navy-dark);
   color: #ffffff;
   display: flex;
@@ -1673,6 +1689,65 @@ h1, h2, h3, h4, h5, h6 {
 
 .lightbox-nav:hover {
   background: var(--azure-bright);
+}
+
+/* Lightbox Mobile Responsiveness */
+@media (max-width: 768px) {
+  .lightbox-modal {
+    padding: 16px 10px;
+    z-index: 10000;
+  }
+
+  .lightbox-content {
+    height: 78vh;
+    max-height: 80vh;
+  }
+
+  .lightbox-info {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .lightbox-info h3 {
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+  }
+
+  .lightbox-info p {
+    font-size: 0.8rem;
+  }
+
+  .lightbox-info .btn-whatsapp {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .lightbox-nav {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .lightbox-prev {
+    left: 6px;
+  }
+
+  .lightbox-next {
+    right: 6px;
+  }
 }
 
 /* Video Gallery Styling */
