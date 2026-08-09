@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const tourPrices = {
     'turtle-snorkeling': { baseUSD: 25, title: 'Snorkeling with Turtle' },
     'fun-diving': { baseUSD: 50, title: 'Fun Diving' },
-    'wreck-diving': { baseUSD: 65, title: 'Wreck Diving Adventure' },
-    'diving-course': { baseUSD: 120, title: 'Diving Course' },
+    'wreck-diving': { baseUSD: 90, title: 'Wreck Diving Adventure (Min 3 Guests)' },
+    'diving-course': { baseUSD: 400, title: 'Diving Course' },
     'whale-dolphin-snorkeling': { baseUSD: 85, title: 'Snorkeling with Whales & Dolphins' },
     'sunset-lighthouse-boat': { baseUSD: 35, title: 'Sunset & Lighthouse Boat Tour' }
   };
@@ -111,7 +111,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const tourInfo = tourPrices[selectedKey] || tourPrices['turtle-snorkeling'];
     const basePrice = tourInfo.baseUSD;
 
-    const adults = parseInt(calcAdults.value) || 1;
+    let adults = parseInt(calcAdults.value) || 1;
+    const isWreckTour = selectedKey === 'wreck-diving';
+    if (isWreckTour) {
+      if (calcAdults) calcAdults.min = "3";
+      if (adults < 3) {
+        adults = 3;
+        if (calcAdults) calcAdults.value = 3;
+      }
+    } else {
+      if (calcAdults) calcAdults.min = "1";
+    }
+
     const children = parseInt(calcChildren.value) || 0;
     const isTurtleTour = selectedKey === 'turtle-snorkeling';
 

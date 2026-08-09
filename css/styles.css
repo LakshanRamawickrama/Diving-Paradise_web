@@ -1859,16 +1859,138 @@ textarea.form-control {
 }
 
 .gopro-banner {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #075985 100%);
   color: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 40px;
+  border-radius: var(--radius-lg, 16px);
+  padding: 36px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 32px;
   margin-top: 50px;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 14px 35px rgba(2, 132, 199, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.gopro-banner::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.gopro-banner-content {
+  flex: 1;
+  text-align: left;
+}
+
+.banner-badge-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.gopro-banner .banner-badge {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.gopro-banner .group-only-badge {
+  background: #ffb703;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(255, 183, 3, 0.4);
+}
+
+.gopro-banner-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -0.4px;
+}
+
+.gopro-banner-desc {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.94);
+  margin-bottom: 16px;
+  max-width: 680px;
+}
+
+.gopro-highlights-grid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gopro-pill {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #ffffff;
+}
+
+.gopro-pill.highlight-pill-alert {
+  background: rgba(254, 240, 138, 0.22);
+  border-color: rgba(254, 240, 138, 0.6);
+  color: #fef08a;
+  font-weight: 700;
+}
+
+.gopro-banner-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-gopro-cta {
+  padding: 14px 28px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gopro-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(34, 197, 94, 0.45);
+}
+
+.cta-subtext {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* -------------------------------------------------------------------
@@ -1910,6 +2032,15 @@ textarea.form-control {
   .gopro-banner {
     flex-direction: column;
     text-align: center;
+    padding: 30px 20px;
+    align-items: center;
+  }
+  .gopro-banner-content {
+    text-align: center;
+  }
+  .banner-badge-wrapper,
+  .gopro-highlights-grid {
+    justify-content: center;
   }
   .gopro-banner .btn {
     width: 100%;
