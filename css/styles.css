@@ -1326,6 +1326,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
 }
 
+.footer-bottom a {
+  color: var(--azure-glow);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 /* Floating WhatsApp Button */
 .floating-whatsapp {
   position: fixed;
