@@ -35,7 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     'turtle-snorkeling': { baseUSD: 25, title: 'Snorkeling with Turtle' },
     'fun-diving': { baseUSD: 50, title: 'Fun Diving' },
     'wreck-diving': { baseUSD: 90, title: 'Wreck Diving Adventure (Min 3 Guests)' },
-    'diving-course': { baseUSD: 400, title: 'Diving Course' },
+    'discover-scuba': { baseUSD: 70, title: 'Discover Scuba Diving Course' },
+    'open-water-diver': { baseUSD: 400, title: 'Open Water Diver Course' },
+    'advanced-open-water': { baseUSD: 250, title: 'Advance Open Water Course' },
+    'rescue-course': { baseUSD: 300, title: 'Rescue Course' },
+    'dive-master': { baseUSD: 800, title: 'Dive Master Course' },
     'whale-dolphin-snorkeling': { baseUSD: 85, title: 'Snorkeling with Whales & Dolphins' },
     'sunset-lighthouse-boat': { baseUSD: 35, title: 'Sunset & Lighthouse Boat Tour' }
   };
@@ -421,7 +425,8 @@ document.addEventListener('DOMContentLoaded', () => {
     mainContactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('contact-name')?.value || 'Guest';
-      const tour = document.getElementById('contact-tour')?.value || 'General Inquiry';
+      const contactTourEl = document.getElementById('contact-tour');
+      const tour = contactTourEl?.selectedOptions?.[0]?.text || contactTourEl?.value || 'General Inquiry';
       const date = document.getElementById('contact-date')?.value || 'Flexible';
       const guests = document.getElementById('contact-guests')?.value || '1';
       const msg = document.getElementById('contact-message')?.value || '';
