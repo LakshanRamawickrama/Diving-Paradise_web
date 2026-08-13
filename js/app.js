@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (calcBookWhatsappBtn) {
       const date = document.getElementById('calc-date')?.value || 'Today/Tomorrow';
       const msg = `Hello! I would like to book the *${tourInfo.title}*\n📅 Date: ${date}\n👥 Guests: ${adults} Adults, ${children} Children\n💰 Total: ${formatPrice(totalUSD)}\nCan you confirm availability?`;
-      calcBookWhatsappBtn.href = `https://wa.me/94742617251?text=${encodeURIComponent(msg)}`;
+      calcBookWhatsappBtn.href = `https://wa.me/94776148207?text=${encodeURIComponent(msg)}`;
     }
   }
 
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tour = modalTourTitle?.textContent || 'Tour';
       
       const text = `Hi Diving Paradise Mirissa!\nName: ${name}\nTour: ${tour}\nPreferred Date: ${date}\nGuests: ${guests}\nPlease contact me to complete my booking.`;
-      window.open(`https://wa.me/94742617251?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://wa.me/94776148207?text=${encodeURIComponent(text)}`, '_blank');
       bookingModal.classList.remove('active');
     });
   }
@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Automatically construct WhatsApp message fallback option
       const waText = `Hi Diving Paradise Mirissa!\nMy Name: ${name}\nTour Interested: ${tour}\nPreferred Date: ${date}\nGuests: ${guests}\nMessage: ${msg}`;
-      const waUrl = `https://wa.me/94742617251?text=${encodeURIComponent(waText)}`;
+      const waUrl = `https://wa.me/94776148207?text=${encodeURIComponent(waText)}`;
       
       const whatsappBtn = document.getElementById('contact-wa-btn');
       if (whatsappBtn) {
