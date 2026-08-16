@@ -807,6 +807,24 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  padding: 4px 0;
+}
+
+.course-sub-info-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-align: left;
+  min-width: 0;
+  flex-grow: 1;
+}
+
+.course-sub-info-btn:hover .course-sub-name {
+  color: var(--azure-bright);
 }
 
 .course-sub-name {
@@ -817,6 +835,25 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.info-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--azure-bright);
+  background: rgba(0, 180, 216, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.course-sub-info-btn:hover .info-badge {
+  background: rgba(0, 180, 216, 0.2);
+  transform: scale(1.05);
 }
 
 .course-sub-btn.btn {

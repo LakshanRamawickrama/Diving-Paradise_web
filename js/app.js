@@ -224,6 +224,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Discover Scuba Info Modal Handler
+  const discoverScubaModal = document.getElementById('discover-scuba-modal');
+  const discoverScubaCloseBtn = document.getElementById('discover-scuba-modal-close');
+
+  window.openDiscoverScubaModal = function() {
+    if (discoverScubaModal) discoverScubaModal.classList.add('active');
+  };
+
+  window.closeDiscoverScubaModal = function() {
+    if (discoverScubaModal) discoverScubaModal.classList.remove('active');
+  };
+
+  document.querySelectorAll('.open-discover-scuba-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.openDiscoverScubaModal();
+    });
+  });
+
+  if (discoverScubaCloseBtn) {
+    discoverScubaCloseBtn.addEventListener('click', window.closeDiscoverScubaModal);
+  }
+
+  if (discoverScubaModal) {
+    discoverScubaModal.addEventListener('click', (e) => {
+      if (e.target === discoverScubaModal) {
+        window.closeDiscoverScubaModal();
+      }
+    });
+  }
+
+  // Global ESC Key Listener to close any open modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (bookingModal) bookingModal.classList.remove('active');
+      if (discoverScubaModal) discoverScubaModal.classList.remove('active');
+    }
+  });
+
   // 6. FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(q => {
     q.addEventListener('click', () => {
