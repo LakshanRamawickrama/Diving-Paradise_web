@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Diving Paradise Mirissa – PADI Certified Dive Center Sri Lanka</title>
+
+  <!-- Primary Meta Tags -->
+  <meta name="description"
+    content="Learn about Diving Paradise Mirissa – Sri Lanka's premier PADI-certified dive center on Mirissa Beach. Discover our story, our expert team, our ocean activities, and our commitment to safe, unforgettable marine adventures.">
+  <meta name="keywords"
+    content="about diving paradise mirissa, mirissa dive center team, PADI certified mirissa, mirissa diving company, mirissa ocean adventure center, sri lanka diving, about paradise dive mirissa">
+  <meta name="author" content="Diving & Snorkeling Paradise Mirissa">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Us | Diving Paradise Mirissa – PADI Certified Dive Center">
+  <meta property="og:description"
+    content="Meet the passionate team behind Mirissa's #1 rated ocean adventure center. PADI-certified guides, 10+ ocean activities, and unforgettable memories await you.">
+  <meta property="og:image" content="assets/images/about_us_center.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- About Page Inline Styles -->
+  <style>
+    /* ============================================
+       ABOUT PAGE - EXTRA STYLES
+    ============================================ */
+
+    /* Story grid: two-column layout */
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .about-story-grid.reverse { direction: rtl; }
+    .about-story-grid.reverse > * { direction: ltr; }
+
+    @media (max-width: 768px) {
+      .about-story-grid,
+      .about-story-grid.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+        gap: 32px;
+      }
+    }
+
+    .about-story-img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+    }
+
+    .about-story-text .section-tag { margin-bottom: 14px; display: inline-flex; }
+    .about-story-text h2 {
+      font-size: 2rem;
+      color: var(--navy-dark);
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .about-story-text p {
+      font-size: 1.02rem;
+      line-height: 1.78;
+      color: var(--text-body);
+      margin-bottom: 14px;
+    }
+    .about-story-text p:last-child { margin-bottom: 0; }
+
+    /* Stats bar */
+    .about-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: linear-gradient(135deg, var(--navy-dark, #0a192f) 0%, #0d2a4a 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+    }
+    @media (max-width: 768px) {
+      .about-stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .about-stats-bar { grid-template-columns: 1fr; }
+    }
+    .about-stat-item {
+      padding: 36px 28px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .about-stat-item:last-child { border-right: none; }
+    .about-stat-number {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .about-stat-number span { color: var(--azure-bright, #00b4d8); }
+    .about-stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ---- Activities Carousel ---- */
+    .activities-carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 4px;
+    }
+    .activities-track {
+      display: flex;
+      gap: 22px;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .activity-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,180,216,0.10);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      position: relative;
+      overflow: hidden;
+      /* 4 cards: (100% minus 3 gaps of 22px) / 4 */
+      flex: 0 0 calc(25% - 17px);
+      min-width: 0;
+    }
+    @media (max-width: 1024px) {
+      .activity-card { flex: 0 0 calc(50% - 11px); }
+    }
+    @media (max-width: 600px) {
+      .activity-card { flex: 0 0 calc(100% - 0px); }
+    }
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--azure-bright, #00b4d8), #0077b6);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,180,216,0.18);
+    }
+    .activity-card:hover::before { opacity: 1; }
+    .activity-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      background: rgba(0,180,216,0.10);
+      color: var(--azure-bright, #00b4d8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+    .activity-name {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--navy-dark, #0a192f);
+      line-height: 1.3;
+    }
+    .activity-desc {
+      font-size: 0.83rem;
+      line-height: 1.65;
+      color: var(--text-body, #4a5568);
+      flex: 1;
+    }
+    .activity-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.71rem;
+      font-weight: 600;
+      background: rgba(0,180,216,0.08);
+      color: var(--azure-bright, #00b4d8);
+      border-radius: 20px;
+      padding: 4px 9px;
+      width: fit-content;
+    }
+    /* Carousel controls */
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,180,216,0.35);
+      background: #ffffff;
+      color: var(--azure-bright, #00b4d8);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .carousel-btn:hover {
+      background: var(--azure-bright, #00b4d8);
+      border-color: var(--azure-bright, #00b4d8);
+      color: #ffffff;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0,180,216,0.25);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      padding: 0;
+    }
+    .carousel-dot.active {
+      background: var(--azure-bright, #00b4d8);
+      transform: scale(1.4);
+    }
+
+    /* Guest types grid */
+    .guest-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .guest-types-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .guest-types-grid { grid-template-columns: 1fr; } }
+
+    .guest-type-card {
+      background: linear-gradient(135deg, #0d2a4a 0%, #0a192f 100%);
+      border-radius: 20px;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+      border: 1px solid rgba(0,180,216,0.15);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .guest-type-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    }
+    .guest-type-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(0,180,216,0.15);
+      color: var(--azure-bright, #00b4d8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .guest-type-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .guest-type-desc {
+      font-size: 0.87rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* Values / Commitment grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 600px) { .values-grid { grid-template-columns: 1fr; } }
+
+    .value-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,180,216,0.10);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: box-shadow 0.25s;
+    }
+    .value-card:hover { box-shadow: 0 10px 35px rgba(0,180,216,0.15); }
+    .value-icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: rgba(0,180,216,0.10);
+      color: var(--azure-bright, #00b4d8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .value-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-dark, #0a192f);
+      margin-bottom: 6px;
+    }
+    .value-desc {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text-body, #4a5568);
+    }
+
+    /* Reviews row */
+    .reviews-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .reviews-row { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .reviews-row { grid-template-columns: 1fr; } }
+
+    .review-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 26px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,180,216,0.09);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      color: #f59e0b;
+      font-size: 1rem;
+    }
+    .review-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-body, #4a5568);
+      font-style: italic;
+    }
+    .review-author {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy-dark, #0a192f);
+    }
+    .review-source {
+      font-size: 0.75rem;
+      color: var(--azure-bright, #00b4d8);
+      font-weight: 500;
+    }
+
+    /* CTA banner */
+    .about-cta-banner {
+      background: linear-gradient(135deg, #0a192f 0%, #0d3a5e 60%, #0a192f 100%);
+      border-radius: 20px;
+      padding: 60px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(0,180,216,0.08);
+    }
+    .about-cta-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(0,180,216,0.06);
+    }
+    @media (max-width: 600px) { .about-cta-banner { padding: 40px 24px; } }
+    .about-cta-banner h2 {
+      font-size: 2.1rem;
+      color: #ffffff;
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+    .about-cta-banner h2 span { color: var(--azure-bright, #00b4d8); }
+    .about-cta-banner p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .about-cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DiveCenter",
+    "name": "Diving Paradise Mirissa",
+    "description": "Premier PADI-certified dive center in Mirissa, Sri Lanka, offering snorkeling, scuba diving, whale watching, and ocean adventure tours.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No.21 Athkam Niwasa",
+      "addressLocality": "Mirissa",
+      "addressRegion": "Southern Province",
+      "postalCode": "81740",
+      "addressCountry": "LK"
+    },
+    "telephone": "+94776148207",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "520"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-content">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/favicon.png" alt="Diving & Snorkeling Paradise Mirissa Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-title">DIVING PARADISE</span>
+          <span class="brand-subtitle">MIRISSA</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tours">Tour Packages</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <button class="btn btn-primary open-booking-modal" data-tour-key="turtle-snorkeling"
+        data-tour-title="Snorkeling with Sea Turtles">
+        <i class="bi bi-calendar-check"></i> Book Now
+      </button>
+
+      <button class="mobile-toggle" id="mobile-toggle" onclick="openMobileDrawer(event)" aria-label="Toggle navigation">
+        <i class="bi bi-list" id="mobile-toggle-icon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-text">
+        <span class="brand-title">DIVING PARADISE</span>
+        <span class="brand-subtitle">MIRISSA</span>
+      </div>
+      <button class="mobile-drawer-close" onclick="closeMobileDrawer(event)" aria-label="Close navigation">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html" onclick="closeMobileDrawer()"><i class="bi bi-house-door-fill"></i> Home</a></li>
+      <li><a href="index.html#tours" onclick="closeMobileDrawer()"><i class="bi bi-compass-fill"></i> Tour Packages</a></li>
+      <li><a href="about.html" onclick="closeMobileDrawer()" class="active"><i class="bi bi-info-circle-fill"></i> About Us</a></li>
+      <li><a href="gallery.html" onclick="closeMobileDrawer()"><i class="bi bi-images"></i> Gallery</a></li>
+      <li><a href="contact.html" onclick="closeMobileDrawer()"><i class="bi bi-envelope-fill"></i> Contact</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="https://wa.me/94776148207?text=Hello!%20I%20want%20to%20book%20a%20tour%20in%20Mirissa" target="_blank"
+        class="btn btn-whatsapp" style="width: 100%;">
+        <i class="bi bi-whatsapp"></i> Chat Live on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO BANNER -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <i class="bi bi-chevron-right"></i>
+          <span>About Us</span>
+        </div>
+        <h1 class="page-title">About <span>Diving Paradise</span> Mirissa</h1>
+        <p class="page-description">
+          Passionate about the ocean, dedicated to safety, and committed to creating memories that last a lifetime —
+          discover the story and the team behind Mirissa's #1 rated marine adventure center.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- OUR STORY -->
+  <section class="section-padding" id="our-story">
+    <div class="container">
+
+      <!-- Story Part 1 -->
+      <div class="about-story-grid" style="margin-bottom: 70px;">
+        <div class="about-story-text">
+          <span class="section-tag light-mode"><i class="bi bi-anchor"></i> Our Story</span>
+          <h2>Discover the Beauty<br>Beneath the Waves</h2>
+          <p>
+            Welcome to <strong>Diving Paradise Mirissa</strong> — where adventure meets the breathtaking beauty of Sri Lanka's spectacular southern coastline. Nestled in the iconic coastal town of Mirissa, we are a passionate team of ocean lovers dedicated to helping every visitor discover the incredible underwater world of the Indian Ocean.
+          </p>
+          <p>
+            Whether you are a first-time snorkeler, an experienced scuba diver, a family on holiday, or simply someone searching for an unforgettable ocean adventure — our professional, PADI-certified guides are here to ensure your experience is safe, exhilarating, and deeply memorable.
+          </p>
+          <p>
+            From the very first moment you step into our dive center at <strong>No.21 Athkam Niwasa, Mirissa Beach</strong>, you become part of a family that shares one simple mission: to connect people with the awe-inspiring beauty of the sea.
+          </p>
+        </div>
+        <div>
+          <img src="assets/images/about_us_center.png"
+            alt="Diving Paradise Mirissa Dive Center on Mirissa Beach"
+            class="about-story-img">
+        </div>
+      </div>
+
+      <!-- Story Part 2 -->
+      <div class="about-story-grid reverse">
+        <div class="about-story-text">
+          <span class="section-tag light-mode"><i class="bi bi-people-fill"></i> Who We Are</span>
+          <h2>A PADI-Certified Team<br>Passionate About the Ocean</h2>
+          <p>
+            Diving Paradise Mirissa is dedicated to providing high-quality diving, snorkeling, and ocean experiences for travelers from all corners of the world. We are proud to be one of the most trusted and highly rated ocean adventure operators on Sri Lanka's southern coast.
+          </p>
+          <p>
+            Our experienced team combines deep professional knowledge with genuine warmth and friendly service, ensuring every guest — regardless of experience level — feels comfortable and confident throughout their time with us. We hold the highest standards of safety and maintain our equipment to professional dive industry specifications.
+          </p>
+          <p>
+            We believe that diving is not just about exploring underwater worlds — it is about forging unforgettable memories, building a connection with the marine environment, and returning home with stories that inspire others. From colorful tropical fish and vibrant coral reefs to majestic sea turtles and playful dolphins, the waters around Mirissa are filled with magic — and we are here to share it with you.
+          </p>
+        </div>
+        <div>
+          <img src="assets/images/scuba.png"
+            alt="PADI certified dive instructor guiding guests underwater in Mirissa"
+            class="about-story-img">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER -->
+  <section class="section-padding bg-alt" id="what-we-offer">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="section-tag light-mode"><i class="bi bi-compass-fill"></i> Our Ocean Activities</span>
+        <h2 class="section-title">What We <span>Offer</span></h2>
+        <p class="section-subtitle">
+          From beginner-friendly snorkeling adventures to professional PADI certification courses — we have the perfect ocean experience for every guest, whatever your level or budget.
+        </p>
+      </div>
+
+      <!-- Activities Carousel -->
+      <div class="activities-carousel-wrapper" id="activities-carousel">
+        <div class="activities-track" id="activities-track">
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-water"></i></div>
+            <div class="activity-name">Snorkeling with Sea Turtles</div>
+            <div class="activity-desc">
+              Swim side by side with magnificent green sea turtles in crystal-clear reef bays just off Mirissa Beach. Our guides guarantee 100% turtle sightings every single time.
+            </div>
+            <div class="activity-badge"><i class="bi bi-star-fill"></i> Most Popular · All Levels</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-mask"></i></div>
+            <div class="activity-name">Fun Diving</div>
+            <div class="activity-desc">
+              For certified scuba divers — explore vibrant coral gardens, reef fish, rays, and more around Mirissa's diverse underwater landscapes with expert local divemasters.
+            </div>
+            <div class="activity-badge"><i class="bi bi-award"></i> Certified Divers</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-tsunami"></i></div>
+            <div class="activity-name">Wreck Diving Adventure</div>
+            <div class="activity-desc">
+              Explore the haunting beauty of sunken wrecks beneath the Indian Ocean. Minimum 3 persons required. Perfect for experienced divers seeking something extraordinary.
+            </div>
+            <div class="activity-badge"><i class="bi bi-people-fill"></i> Min. 3 Persons</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-mortarboard-fill"></i></div>
+            <div class="activity-name">Discover Scuba Diving</div>
+            <div class="activity-desc">
+              Never dived before? Breathe underwater for the first time under 1-on-1 expert supervision — no certification required. Just half a day to try the ocean like never before.
+            </div>
+            <div class="activity-badge"><i class="bi bi-person-fill"></i> No Experience Needed</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-journal-check"></i></div>
+            <div class="activity-name">PADI Open Water Course</div>
+            <div class="activity-desc">
+              The world's most popular scuba certification. Earn your internationally recognised PADI license and gain the skills to dive anywhere on the planet, up to 18 meters depth.
+            </div>
+            <div class="activity-badge"><i class="bi bi-globe"></i> International PADI Cert.</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-arrow-up-circle-fill"></i></div>
+            <div class="activity-name">Advanced Open Water Course</div>
+            <div class="activity-desc">
+              Dive deeper (up to 30m), master deep diving and navigation, and build confidence for challenging conditions. Requires Open Water certification.
+            </div>
+            <div class="activity-badge"><i class="bi bi-bar-chart-fill"></i> Open Water Required</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+            <div class="activity-name">Rescue Diver Course</div>
+            <div class="activity-desc">
+              One of the most rewarding dive courses. Learn to prevent and manage emergencies, develop self-rescue skills, and assist fellow divers. Gateway to Divemaster certification.
+            </div>
+            <div class="activity-badge"><i class="bi bi-shield-check"></i> Advanced Required</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-star-fill"></i></div>
+            <div class="activity-name">Divemaster Course</div>
+            <div class="activity-desc">
+              Become a professional. The PADI Divemaster is the first professional level in recreational diving — lead dives, supervise divers, and assist instructors.
+            </div>
+            <div class="activity-badge"><i class="bi bi-trophy-fill"></i> Professional Level</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-eye-fill"></i></div>
+            <div class="activity-name">Snorkeling with Whales &amp; Dolphins</div>
+            <div class="activity-desc">
+              Witness blue whales and playful spinner dolphins in Mirissa's legendary deep waters — one of the world's premier whale watching destinations.
+            </div>
+            <div class="activity-badge"><i class="bi bi-camera-fill"></i> Seasonal Peak Tours</div>
+          </div>
+
+          <div class="activity-card">
+            <div class="activity-icon"><i class="bi bi-sunset-fill"></i></div>
+            <div class="activity-name">Boat Tour — Sunset &amp; Lighthouse</div>
+            <div class="activity-desc">
+              Sail along Mirissa's stunning coastline, visit the iconic Parrot Rock lighthouse, and watch the sun set over the Indian Ocean in a spectacular blaze of colour.
+            </div>
+            <div class="activity-badge"><i class="bi bi-sun-fill"></i> All Ages Welcome</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Carousel Controls: prev / dots / next -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="act-prev" aria-label="Previous activities">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="carousel-dots" id="act-dots"></div>
+        <button class="carousel-btn" id="act-next" aria-label="Next activities">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <div style="text-align:center; margin-top: 32px;">
+        <a href="index.html#tours" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px;">
+          <i class="bi bi-compass"></i> View All Tour Packages &amp; Prices
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel JS — inline, self-contained -->
+  <script>
+  (function () {
+    var track   = document.getElementById('activities-track');
+    var wrapper = document.getElementById('activities-carousel');
+    var prevBtn = document.getElementById('act-prev');
+    var nextBtn = document.getElementById('act-next');
+    var dotsEl  = document.getElementById('act-dots');
+
+    var cards, visibleCount, totalSlides, current = 0, timer;
+
+    function getVisibleCount() {
+      var w = wrapper.offsetWidth;
+      if (w <= 600) return 1;
+      if (w <= 1024) return 2;
+      return 4;
+    }
+
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      for (var i = 0; i < totalSlides; i++) {
+        var d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        (function (idx) { d.addEventListener('click', function () { goTo(idx); }); })(i);
+        dotsEl.appendChild(d);
+      }
+    }
+
+    function goTo(idx) {
+      current = (idx + totalSlides) % totalSlides;
+      var cardW = cards[0].getBoundingClientRect().width;
+      var gap = 22;
+      track.style.transform = 'translateX(-' + (current * (cardW + gap)) + 'px)';
+      dotsEl.querySelectorAll('.carousel-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() { timer = setInterval(next, 3500); }
+    function stopAuto()  { clearInterval(timer); }
+
+    function init() {
+      cards = track.querySelectorAll('.activity-card');
+      visibleCount = getVisibleCount();
+      totalSlides  = cards.length - visibleCount + 1;
+      if (totalSlides < 1) totalSlides = 1;
+      current = 0;
+      track.style.transform = 'translateX(0)';
+      buildDots();
+      stopAuto();
+      startAuto();
+    }
+
+    prevBtn.addEventListener('click', function () { stopAuto(); prev(); startAuto(); });
+    nextBtn.addEventListener('click', function () { stopAuto(); next(); startAuto(); });
+    wrapper.addEventListener('mouseenter', stopAuto);
+    wrapper.addEventListener('mouseleave', startAuto);
+
+    /* Touch / swipe support */
+    var touchX = 0;
+    wrapper.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; stopAuto(); }, { passive: true });
+    wrapper.addEventListener('touchend', function (e) {
+      var diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); }
+      startAuto();
+    }, { passive: true });
+
+    /* Re-init on resize */
+    window.addEventListener('resize', init);
+    /* Wait for layout then init */
+    window.addEventListener('load', init);
+    init();
+  })();
+  </script>
+
+
+
+  <!-- WHO OUR GUESTS ARE -->
+  <section class="section-padding" id="our-guests">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="section-tag light-mode"><i class="bi bi-people-fill"></i> Who Can Join Us</span>
+        <h2 class="section-title">Our Adventures Are <span>For Everyone</span></h2>
+        <p class="section-subtitle">
+          Whether you have never seen the ocean or are a seasoned dive professional — there is a perfect experience waiting for you at Diving Paradise Mirissa.
+        </p>
+      </div>
+
+      <div class="guest-types-grid">
+
+        <div class="guest-type-card">
+          <div class="guest-type-icon"><i class="bi bi-emoji-smile-fill"></i></div>
+          <div class="guest-type-title">First-Time Visitors &amp; Non-Swimmers</div>
+          <div class="guest-type-desc">Never snorkeled or swum in the ocean before? Our guides provide dedicated 1-on-1 support, floating vests, and constant supervision so you can safely enjoy the sea — no prior experience needed.</div>
+        </div>
+
+        <div class="guest-type-card">
+          <div class="guest-type-icon"><i class="bi bi-people-fill"></i></div>
+          <div class="guest-type-title">Families &amp; Children</div>
+          <div class="guest-type-desc">We warmly welcome families with children. Our snorkeling and boat tours are gentle, fun, and perfectly suited for kids who want to discover ocean life in a safe, guided environment.</div>
+        </div>
+
+        <div class="guest-type-card">
+          <div class="guest-type-icon"><i class="bi bi-backpack-fill"></i></div>
+          <div class="guest-type-title">Solo Travelers &amp; Backpackers</div>
+          <div class="guest-type-desc">Traveling alone and looking for an adventure? Join one of our group departures to meet fellow travelers while experiencing the most spectacular marine life in Sri Lanka's southern waters.</div>
+        </div>
+
+        <div class="guest-type-card">
+          <div class="guest-type-icon"><i class="bi bi-award-fill"></i></div>
+          <div class="guest-type-title">Certified Scuba Divers</div>
+          <div class="guest-type-desc">Already certified? Join our Fun Dives, Wreck Diving Adventures, or explore Mirissa's diverse reef systems with our PADI-certified divemasters who know every inch of the local dive sites.</div>
+        </div>
+
+        <div class="guest-type-card">
+          <div class="guest-type-icon"><i class="bi bi-mortarboard-fill"></i></div>
+          <div class="guest-type-title">Aspiring Divers &amp; Students</div>
+          <div class="guest-type-desc">Want to learn to dive properly? From Discover Scuba to the full PADI Open Water, Advanced, Rescue, and Divemaster courses — we offer a complete training pathway in a stunning real-ocean environment.</div>
+        </div>
+
+        <div class="guest-type-card">
+          <div class="guest-type-icon"><i class="bi bi-camera2"></i></div>
+          <div class="guest-type-title">Photographers &amp; Wildlife Lovers</div>
+          <div class="guest-type-desc">Capture the magic of sea turtles, blue whales, reef fish, and vibrant coral. We offer free 4K GoPro photos and video for group bookings — and our guides know exactly how to find the most photogenic marine encounters.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR COMMITMENT -->
+  <section class="section-padding bg-alt" id="our-commitment">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="section-tag light-mode"><i class="bi bi-shield-fill-check"></i> Our Commitment</span>
+        <h2 class="section-title">Safety, Respect &amp; <span>Responsibility</span></h2>
+        <p class="section-subtitle">
+          Your safety and the health of the ocean are at the heart of everything we do. We are committed to responsible marine tourism that protects Sri Lanka's underwater heritage for future generations.
+        </p>
+      </div>
+
+      <div class="values-grid">
+
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-shield-check"></i></div>
+          <div>
+            <div class="value-title">Pre-Activity Safety Briefings</div>
+            <div class="value-desc">Before every activity, our team provides a comprehensive safety briefing and ensures you understand exactly what to expect in the water. No one enters the ocean without being fully prepared and comfortable.</div>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-wrench-adjustable-circle-fill"></i></div>
+          <div>
+            <div class="value-title">Professional Grade Equipment</div>
+            <div class="value-desc">We use high-quality, regularly serviced snorkeling and scuba diving equipment maintained to industry standards. From BCDs and regulators to masks and wetsuits — everything is inspected before every use.</div>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-person-badge-fill"></i></div>
+          <div>
+            <div class="value-title">PADI-Certified Instructors &amp; Guides</div>
+            <div class="value-desc">Every member of our team holds internationally recognised PADI certifications. Our dive masters and instructors bring years of practical experience guiding guests of all abilities safely through Mirissa's waters.</div>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-leaf-fill"></i></div>
+          <div>
+            <div class="value-title">Responsible Marine Tourism</div>
+            <div class="value-desc">We actively educate our guests on how to interact respectfully with marine life — never touching, chasing, or disturbing animals. We are committed to preserving the ocean ecosystem that makes these experiences possible.</div>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+          <div>
+            <div class="value-title">Inclusive &amp; Welcoming for All</div>
+            <div class="value-desc">We go out of our way to make every guest feel welcome — non-swimmers, first-timers, families with children, elderly visitors, and solo adventurers alike. The ocean is for everyone, and we make sure everyone can experience it.</div>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <div>
+            <div class="value-title">Deep Local Knowledge</div>
+            <div class="value-desc">Our team has spent years diving the waters around Mirissa and knows the best spots for every kind of marine encounter. This local expertise means higher sighting rates, safer conditions, and a richer experience for every guest.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CTA BANNER -->
+  <section class="section-padding bg-alt">
+    <div class="container">
+      <div class="about-cta-banner">
+        <h2>Ready to <span>Explore, Dive</span><br>&amp; Discover Paradise?</h2>
+        <p>
+          Mirissa is more than a beautiful beach — it is a world of extraordinary ocean encounters waiting to be experienced. Come and dive in with a team that lives and breathes the sea.
+        </p>
+        <p style="font-style: italic; font-size: 0.95rem; margin-bottom: 28px; position: relative; z-index: 1;">
+          <strong style="color: var(--azure-bright);">Explore. Dive. Discover. Experience Paradise.</strong>
+        </p>
+        <div class="about-cta-btns">
+          <a href="index.html#tours" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px;">
+            <i class="bi bi-compass"></i> Explore Our Tours
+          </a>
+          <a href="https://wa.me/94776148207?text=Hello%20Diving%20Paradise%20Mirissa!%20I%20saw%20your%20About%20page%20and%20want%20to%20book%20a%20tour"
+            target="_blank" class="btn btn-whatsapp" style="font-size: 1rem; padding: 14px 32px;">
+            <i class="bi bi-whatsapp"></i> Book on WhatsApp
+          </a>
+          <a href="contact.html" class="btn btn-outline"
+            style="font-size: 1rem; padding: 14px 32px; color: #fff; border-color: rgba(255,255,255,0.4);">
+            <i class="bi bi-envelope-fill"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <img src="assets/images/logo.png" alt="Diving & Snorkeling Paradise Mirissa Logo" class="brand-logo-img"
+              style="width: 52px; height: 52px; border-radius: 50%;">
+            <div class="brand-text">
+              <span class="brand-title" style="color: #ffffff;">DIVING PARADISE</span>
+              <span class="brand-subtitle">MIRISSA</span>
+            </div>
+          </div>
+          <p>Mirissa's premier center for sea turtle snorkeling, blue whale marine safaris, scuba diving, and exciting ocean adventures.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#tours">Tour Packages</a></li>
+            <li><a href="gallery.html">Gallery Page</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our Tours</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#tours">Snorkeling with Turtle</a></li>
+            <li><a href="index.html#tours">Fun Diving</a></li>
+            <li><a href="index.html#tours">Wreck Diving Adventure</a></li>
+            <li><a href="index.html#tours">Diving Courses</a></li>
+            <li><a href="index.html#tours">Snorkeling with Whales &amp; Dolphins</a></li>
+            <li><a href="index.html#tours">Sunset &amp; Lighthouse Boat Tour</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <p><i class="bi bi-geo-alt text-azure"></i> No.21 Athkam Niwasa, Mirissa</p>
+          <p><i class="bi bi-whatsapp text-azure"></i> +94 77 614 8207</p>
+          <p><i class="bi bi-clock text-azure"></i> Open 24 Hours Daily</p>
+          <p style="margin-top: 12px;">
+            <a href="https://www.google.com/maps/place/Diving+paradise+mirissa/@5.938224,80.4660033,15z/"
+              target="_blank" rel="noopener"
+              style="color: var(--azure-bright); text-decoration: none; font-size: 0.88rem;">
+              <i class="bi bi-google"></i> View on Google Maps
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Diving Paradise &amp; Snorkeling Mirissa. All rights reserved. | Designed by <a
+            href="https://www.facebook.com/share/192YZzfC4R/?mibextid=wwXIfr" target="_blank"
+            rel="noopener">WebMind Innovations</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/94776148207?text=Hello%20Diving%20Paradise%20Mirissa!%20I%20want%20to%20book%20a%20tour"
+    target="_blank" class="floating-whatsapp" aria-label="Contact on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+    <span class="whatsapp-badge">1</span>
+  </a>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Close modal"><i class="bi bi-x-lg"></i></button>
+      <h3 style="color: var(--navy-dark); font-size: 1.4rem; margin-bottom: 6px;">Reserve Tour</h3>
+      <p style="color: var(--azure-bright); font-weight: 700; font-size: 1.1rem; margin-bottom: 20px;"
+        id="modal-tour-title">Snorkeling with Sea Turtles</p>
+
+      <form id="modal-booking-form">
+        <div style="margin-bottom: 14px;">
+          <label style="font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 4px;">Your Full Name</label>
+          <input type="text" id="modal-name" required placeholder="John Doe"
+            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+        <div style="margin-bottom: 14px;">
+          <label style="font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 4px;">Preferred Date</label>
+          <input type="date" id="modal-date" required
+            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 4px;">Number of Persons</label>
+          <select id="modal-guests" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+            <option value="1">1 Person</option>
+            <option value="2" selected>2 Persons</option>
+            <option value="3">3 Persons</option>
+            <option value="4+">4+ Persons</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+          <i class="bi bi-whatsapp"></i> Confirm &amp; Book via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Back to Top Arrow Button -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Scroll to Top">
+    <i class="bi bi-chevron-up"></i>
+  </button>
+
+  <!-- Custom JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
