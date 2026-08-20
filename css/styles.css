@@ -289,17 +289,18 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(7, 19, 37, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 180, 216, 0.2);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(10, 28, 54, 0.65);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.25);
+  box-shadow: 0 8px 32px rgba(4, 15, 30, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
-  background: rgba(4, 12, 24, 0.95);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 180, 216, 0.2);
+  background: rgba(8, 22, 44, 0.88);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.35);
+  box-shadow: 0 12px 36px rgba(3, 12, 25, 0.55), 0 0 18px rgba(0, 180, 216, 0.25);
 }
 
 .navbar-content {
@@ -359,6 +360,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   letter-spacing: -0.3px;
   line-height: 1.1;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .brand-subtitle {
@@ -367,6 +369,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+  text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
 }
 
 .nav-links {
@@ -374,11 +377,13 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 4px;
   list-style: none;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4px 8px;
+  background: rgba(14, 40, 75, 0.55);
+  padding: 5px 8px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 180, 216, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 992px) {
@@ -390,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links a {
   font-size: 0.88rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   position: relative;
   padding: 6px 14px;
   border-radius: var(--radius-full);
@@ -400,9 +405,9 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links a:hover,
 .nav-links a.active {
   color: #ffffff;
-  background: rgba(0, 180, 216, 0.3);
-  border: 1px solid rgba(0, 180, 216, 0.5);
-  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.3);
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.45), rgba(0, 119, 182, 0.55));
+  border: 1px solid rgba(0, 229, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 180, 216, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .nav-links a::after,
@@ -421,7 +426,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-toggle {
   display: none;
   font-size: 1.6rem;
-  color: var(--navy-dark);
+  color: #ffffff;
   cursor: pointer;
   background: none;
   border: none;
@@ -431,13 +436,48 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
   position: relative;
   min-height: 88vh;
-  background: linear-gradient(180deg, rgba(4, 12, 24, 0.55) 0%, rgba(7, 19, 37, 0.82) 100%),
-              url('../assets/images/hero.png') center/cover no-repeat;
+  background-color: var(--navy-dark);
   display: flex;
   align-items: center;
   color: #ffffff;
   overflow: hidden;
   padding: 60px 0;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  filter: brightness(1.25) contrast(1.06) saturate(1.25);
+  pointer-events: none;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(4, 18, 38, 0.18) 0%, rgba(7, 24, 48, 0.48) 100%),
+              linear-gradient(180deg, rgba(0, 150, 214, 0.12) 0%, rgba(7, 19, 37, 0.42) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero::after {
@@ -448,6 +488,13 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   height: 80px;
   background: linear-gradient(to top, var(--bg-light), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 3;
 }
 
 .hero-grid {
@@ -458,45 +505,49 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 920px;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 180, 216, 0.2);
-  border: 1px solid rgba(0, 180, 216, 0.4);
-  backdrop-filter: blur(8px);
+  background: rgba(7, 19, 37, 0.55);
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 8px 18px;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--azure-glow);
   margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hero-title {
   font-size: 3.5rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.18;
   color: #ffffff;
   margin-bottom: 20px;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 4px 25px rgba(0, 0, 0, 0.6);
 }
 
 .hero-title span {
-  background: linear-gradient(135deg, var(--azure-glow), var(--azure-bright));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #00f0ff;
+  display: inline;
+  text-shadow: 0 0 25px rgba(0, 240, 255, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.5px;
 }
 
 .hero-description {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: #ffffff;
   margin-bottom: 32px;
   line-height: 1.6;
   max-width: 780px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .hero-ctas {
@@ -1490,26 +1541,64 @@ h1, h2, h3, h4, h5, h6 {
 /* Modal Overlay */
 
 /* -------------------------------------------------------------------
-   Page Header & Inner Page Hero
+   Page Header & Inner Page Hero (Animated Ocean Dynamics)
    ------------------------------------------------------------------- */
 .page-hero {
-  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-deep) 60%, var(--navy-mid) 100%);
+  background: linear-gradient(-45deg, #071325, #0d2847, #00375f, #0a1f38);
+  background-size: 300% 300%;
+  animation: oceanGradientShift 14s ease infinite;
   color: #ffffff;
-  padding: 70px 0 60px 0;
+  padding: 75px 0 65px 0;
   position: relative;
   overflow: hidden;
+}
+
+@keyframes oceanGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .page-hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, rgba(0,0,0,0) 70%);
+  top: -30%;
+  right: -5%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.22) 0%, rgba(0, 180, 216, 0.08) 50%, rgba(0, 0, 0, 0) 70%);
   border-radius: 50%;
+  filter: blur(40px);
+  animation: floatOrb1 12s ease-in-out infinite alternate;
   pointer-events: none;
+  z-index: 1;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(0, 150, 255, 0.18) 0%, rgba(0, 119, 182, 0.06) 50%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: floatOrb2 16s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-60px, 40px) scale(1.15); }
+  100% { transform: translate(30px, -20px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(70px, -30px) scale(1.2); }
+  100% { transform: translate(-40px, 30px) scale(0.9); }
 }
 
 .page-hero-content {
@@ -1518,6 +1607,18 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
+  animation: pageHeroFadeIn 0.8s ease-out;
+}
+
+@keyframes pageHeroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .breadcrumbs {
@@ -1544,15 +1645,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: #ffffff;
   margin-bottom: 14px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .page-title span {
-  color: var(--azure-bright);
+  color: #00f0ff;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
 }
 
 .page-description {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
   line-height: 1.6;
 }
 
